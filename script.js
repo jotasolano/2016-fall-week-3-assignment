@@ -11,10 +11,36 @@
 
 var productList = []; //this is an array
 
-//Your code here
+var sneaker1 = {
+	name: "Adult Suede Classic Shoe",
+	maker: "Puma",
+	price: "168.32"
+}
+
+var sneaker2 = {
+	name: "Women's Gusto Cross Trainer",
+	maker: "Champion",
+	price: "39.97"
+}
+
+var sneaker3 = {
+	name: "Air Max",
+	maker: "Nike",
+	price: "189.99"
+}
+
+var sneaker4 = {
+	name: "Chuck Norris",
+	maker: "Converse",
+	price: "89.99"
+}
+
+productList.push(sneaker1, sneaker2, sneaker3, sneaker4);
+
 //Hint: productList.push(newObject) will add the object you just created to the array
 
-console.log(productList[0]);
+console.table(productList);
+// console.log(productList[0]);
 
 /* Step 2
  * Iterate (or go through) productList one by one using the for loop
@@ -23,9 +49,11 @@ console.log(productList[0]);
  */
 for(var i = 0; i < productList.length; i++){
 
-    //Your code here
+    if (productList[i].price < 50) {
+    	console.log("The product " + productList[i].name + " costs " +
+    				productList[i].price + " and it's a match")
+    }
 
-    console.log();
 }
 
 /* Step 3
@@ -33,8 +61,19 @@ for(var i = 0; i < productList.length; i++){
  */
 
 //3.1 first, calculate total price using the for loop again
+var sum = 0;
+
+for (var i = 0; i < productList.length; i++) {
+	sum += parseFloat(productList[i].price, 10);
+}
+
+console.log("sum: " + sum);
 
 //3.2 then, divide total price by the number of products, using proudctList.length
+
+var avg = sum/productList.length
+
+console.log("average: " + avg);
 
 
 /* Step 4
@@ -46,7 +85,11 @@ function comparePrice(p){
 
     var numOfMatchingProducts = 0;
 
-    //Your code here
+    for (var i = 0; i < productList.length; i++) {
+    	if (productList[i].price < p) {
+    		numOfMatchingProducts ++;
+    	}
+    }
 
     return numOfMatchingProducts;
 }
